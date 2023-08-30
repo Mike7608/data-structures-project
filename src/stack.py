@@ -40,3 +40,13 @@ class Stack:
             self.top = self.top.next_node
             pop_node.next_node = None
             return pop_node.data
+
+    def is_empty(self):
+        if self.top is None:
+            return True
+
+    def __str__(self):
+        if self.is_empty():
+            return f"{self.__class__.__name__} (None)"
+        else:
+            return f"{self.__class__.__name__} ({self.top.data})"
