@@ -44,3 +44,34 @@ class LinkedList:
 
         ll_string += ' None'
         return ll_string.strip()
+
+    def to_list(self):
+        """ Возвращает список с данными """
+        node = self.head
+        if node is None:
+            return None
+
+        ll_list = []
+
+        while node:
+            l_data = node.data
+            ll_list.append(l_data)
+            node = node.next
+
+        return ll_list
+
+    def get_data_by_id(self, value):
+        """ Возвращает первый найденный в LinkedList словарь с ключом 'id' """
+
+        node = self.head
+        if node is None:
+            return None
+
+        while node:
+            try:
+                if node.data["id"] == value:
+                    return node.data
+            except TypeError:
+                print("Данные не являются словарем или в словаре нет id")
+            node = node.next
+
