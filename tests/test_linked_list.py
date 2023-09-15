@@ -1,8 +1,6 @@
 """Здесь надо написать тесты с использованием unittest для модуля linked_list."""
 import unittest
 from src.linked_list import LinkedList, Node
-from io import StringIO
-from unittest.mock import patch
 
 
 class TestLinkedList(unittest.TestCase):
@@ -60,11 +58,13 @@ class TestLinkedList(unittest.TestCase):
         test = ll.get_data_by_id(3)
         self.assertEqual(test, {'id': 3, 'username': 'mosh_s'})
 
-    @patch('sys.stdout', new_callable=StringIO)
-    def test_TypeError_get_data_by_id(self, mock):
+    def test_TypeError_get_data_by_id(self):
         ll = LinkedList()
         ll.insert_beginning({'id': 1, 'username': 'lazzy508509'})
         ll.insert_at_end('idusername')
         ll.insert_at_end([1, 2, 3])
         ll.insert_at_end({'id': 2, 'username': 'mosh_s'})
+        with self.assertRaises(TypeError):
+            ll.get_data_by_id(2)
+
 
